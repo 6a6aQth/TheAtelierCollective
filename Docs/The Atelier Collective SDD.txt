@@ -1,0 +1,249 @@
+The Atelier Collective
+Website System Design Document
+Framework: M.A.S.T.E.R
+Objective: Elegant, scalable, multi-studio digital platform
+________________________________________
+M — MODEL THE SYSTEM
+Requirements & Constraints
+1. System Purpose
+The website is the digital flagship for The Atelier Collective, showcasing five specialized studios while enabling commerce, bookings, and brand storytelling.
+It must feel:
+•	Luxurious
+•	Editorial
+•	Minimal
+•	Trustworthy
+•	Timeless
+________________________________________
+2. User Types
+User	Description
+Guest Visitor	Browses studios, views services, brand story
+Client	Books appointments, views wig inventory, makes inquiries
+Admin / Staff	Manages inventory, bookings, content, availability
+________________________________________
+3. Functional Requirements
+Core (Umbrella Brand)
+•	Landing page with atelier storytelling
+•	Brand philosophy & founders story
+•	Studio navigation (5 Ateliers)
+•	Contact & inquiry forms
+•	Instagram / social embedding
+•	SEO-optimized editorial pages
+The Hair Atelier (Priority Studio)
+•	Wig catalog (view stock, images, price, status)
+•	Wig detail pages
+•	Braiding appointment booking
+•	Availability calendar
+•	Booking confirmation notifications
+Other Studios
+•	Service listings per atelier
+•	Gallery/portfolio
+•	Inquiry / booking request forms (phase 1)
+•	Upgradeable to full booking later
+Admin
+•	CMS for content (pages, images, text)
+•	Wig inventory management
+•	Booking management
+•	Availability control
+________________________________________
+4. Non-Functional Requirements
+Category	Target
+Availability	99.9%
+Performance	< 2s page load
+Security	HTTPS, RBAC, secure auth
+Scalability	Handle seasonal booking spikes
+Maintainability	Modular, studio-based
+SEO	Core Web Vitals optimized
+Aesthetics	High-end editorial design
+________________________________________
+5. Constraints
+•	Budget: Lean–mid (startup luxury brand)
+•	Team: Small dev team / solo engineer friendly
+•	Timeline: MVP first, expand later
+•	Traffic: Low initially, burst during promos
+________________________________________
+6. Success Metrics
+•	Conversion rate (bookings)
+•	Bounce rate < 40%
+•	Booking completion time < 2 minutes
+•	Zero downtime during promotions
+________________________________________
+A — ARCHITECT
+High-Level Architecture
+1. Architecture Overview
+User
+ ↓
+CDN (Cloudflare)
+ ↓
+Next.js Web App
+ ↓
+API Layer
+ ↓
+Database + Storage
+________________________________________
+2. Core Components
+Frontend
+•	Next.js (App Router)
+•	Static + dynamic rendering
+•	Elegant UI animations
+•	Studio-based routing (/hair, /beauty, etc.)
+Backend
+•	API (REST)
+•	Auth & admin endpoints
+•	Booking logic
+•	Inventory management
+Database
+•	Relational DB (PostgreSQL)
+Storage
+•	Image assets (wigs, galleries)
+Integrations
+•	Email notifications
+•	Calendar system
+•	Analytics
+________________________________________
+3. Data Flow (Example: Booking)
+User → Select Service → Pick Time
+→ API validates availability
+→ Booking saved to DB
+→ Confirmation email sent
+→ Admin dashboard updated
+________________________________________
+4. Core Data Models (Simplified)
+User
+•	id
+•	name
+•	email
+•	role (admin/client)
+Atelier
+•	id
+•	name
+•	description
+Service
+•	id
+•	atelier_id
+•	name
+•	duration
+•	price
+Wig
+•	id
+•	name
+•	images[]
+•	price
+•	status (in stock / sold)
+Booking
+•	id
+•	user_id
+•	service_id
+•	date
+•	status
+________________________________________
+5. Deployment Architecture
+•	CDN → Frontend → API → DB
+•	Stateless frontend
+•	Centralized database
+•	Image storage offloaded
+________________________________________
+S — SCALE THE SYSTEM
+Capacity & Growth Planning
+1. Traffic Estimation (Year 1)
+•	Daily users: 100–300
+•	Peak RPS: < 20
+•	Read-heavy system
+•	Media-heavy (images)
+________________________________________
+2. Scalability Strategy
+•	CDN caching for images & pages
+•	Static generation for editorial pages
+•	API rate limiting
+•	Horizontal frontend scaling (serverless)
+________________________________________
+3. Bottlenecks & Mitigation
+Risk	Mitigation
+Image load	CDN + optimized formats
+Booking spikes	Queue + async processing
+DB load	Indexing + connection pooling
+________________________________________
+T — TRADEOFFS
+Technology Decisions
+1. Frontend
+Chosen: Next.js
+✔ SEO
+✔ Elegant routing
+✔ Performance
+✖ Slight learning curve
+________________________________________
+2. Backend
+Chosen: Node.js (API routes or NestJS later)
+✔ Fast to ship
+✔ Large ecosystem
+✖ Needs structure discipline
+________________________________________
+3. Database
+Chosen: PostgreSQL
+✔ Strong relations (bookings, services)
+✔ Transactions
+✖ Slightly heavier than NoSQL
+________________________________________
+4. API Protocol
+Chosen: REST
+✔ Simple
+✔ Admin-friendly
+✖ Less flexible than GraphQL
+________________________________________
+5. Deployment
+Chosen: Serverless-first
+✔ Low ops
+✔ Scales automatically
+✖ Vendor lock-in risk
+________________________________________
+E — EXECUTION PLAN
+Infrastructure & DevOps
+1. Hosting
+Layer	Platform
+Frontend	Vercel
+Backend	Vercel Functions / Render
+DB	Supabase / Neon
+Storage	Cloudflare R2
+DNS	Cloudflare
+________________________________________
+2. CI/CD
+•	GitHub → Vercel auto-deploy
+•	Preview environments
+•	Main → Production pipeline
+________________________________________
+3. Domains & SSL
+•	theateliercollective.com
+•	hair.theateliercollective.com (optional later)
+•	Cloudflare SSL & WAF
+________________________________________
+4. Security
+•	Role-based admin access
+•	Environment secrets
+•	HTTPS everywhere
+•	WAF protection
+________________________________________
+R — RESILIENCE
+Reliability & Observability
+1. Reliability
+•	CDN fallback
+•	Stateless frontend
+•	Managed DB backups
+•	Graceful booking retries
+________________________________________
+2. Observability
+•	Error tracking
+•	Performance monitoring
+•	Booking failure alerts
+________________________________________
+3. Disaster Recovery
+•	Automated DB backups
+•	Asset redundancy
+•	Restore time < 1 hour
+________________________________________
+Final Notes — Brand Alignment
+This system:
+•	Reflects atelier-level craftsmanship
+•	Scales studio-by-studio
+•	Keeps The Hair Atelier as revenue engine
+•	Preserves elegance over complexity
+________________________________________
+
