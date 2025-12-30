@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, ShoppingBag } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -38,17 +39,16 @@ export function Navbar() {
         </div>
 
         <Link href="/" className="flex-shrink-0 text-center group">
-          <span className="block text-xl md:text-2xl font-serif tracking-tighter leading-none group-hover:italic transition-all">
-            THE ATELIER
-          </span>
-          <span
+          <Image
+            src="/Atelier Logo with no background.png"
+            alt="The Atelier Collective"
+            width={120}
+            height={60}
             className={cn(
-              "block text-[8px] md:text-[10px] uppercase tracking-[0.4em] mt-1 transition-colors",
-              isScrolled ? "text-background/60" : "text-primary",
+              "h-10 md:h-14 w-auto transition-all duration-300",
+              isScrolled ? "brightness-0 invert" : ""
             )}
-          >
-            COLLECTIVE
-          </span>
+          />
         </Link>
 
         <div className="flex-1 flex justify-end items-center gap-6">

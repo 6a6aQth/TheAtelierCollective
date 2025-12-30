@@ -18,7 +18,7 @@ export default function Home() {
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="relative aspect-square md:aspect-[4/5] overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80"
+              src="/Atelier About.JPEG"
               alt="The Founders"
               fill
               className="object-cover"
@@ -77,11 +77,16 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-            {[1, 2, 3, 4].map((i) => (
+            {[
+              { src: "/Atelier Models 2.JPEG", alt: "Atelier Model 2" },
+              { src: "/Atelier Models 3.JPEG", alt: "Atelier Model 3" },
+              { src: "/Atelier Models 4.JPG", alt: "Atelier Model 4" },
+              { src: "/Atelier Models 7.JPEG", alt: "Atelier Model 7" },
+            ].map((image, i) => (
               <div key={i} className="aspect-[4/5] bg-muted relative group overflow-hidden">
                 <Image
-                  src={`https://images.unsplash.com/photo-${1500000000000 + i * 1000000}?auto=format&fit=crop&q=80`}
-                  alt={`Gallery Image ${i}`}
+                  src={image.src}
+                  alt={image.alt}
                   fill
                   className="object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
                 />
