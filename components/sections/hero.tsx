@@ -1,6 +1,7 @@
 "use client"
 
 import dynamic from "next/dynamic"
+import Link from "next/link"
 
 const LiquidEther = dynamic(() => import("@/components/ui/LiquidEther"), {
   ssr: false,
@@ -38,12 +39,18 @@ export function Hero() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-700">
-          <button className="bg-primary text-primary-foreground px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-semibold hover:bg-foreground transition-all duration-300">
+          <Link 
+            href="#studios"
+            className="bg-primary text-primary-foreground px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-semibold hover:bg-foreground transition-all duration-300"
+          >
             Explore the Studios
-          </button>
-          <button className="border border-primary/20 hover:border-primary px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-semibold transition-all duration-300">
+          </Link>
+          <Link 
+            href="/book"
+            className="border border-primary/20 hover:border-primary px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-semibold transition-all duration-300"
+          >
             Book Appointment
-          </button>
+          </Link>
         </div>
       </div>
 

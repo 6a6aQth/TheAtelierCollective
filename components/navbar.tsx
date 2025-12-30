@@ -46,7 +46,7 @@ export function Navbar() {
             {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
           <Link
-            href="#book"
+            href="/book"
             className="hidden md:block text-[10px] uppercase tracking-[0.2em] font-semibold border-b border-primary pb-1 hover:text-primary transition-colors"
           >
             Book Appointment
@@ -61,17 +61,35 @@ export function Navbar() {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-        <div className="flex flex-col gap-8 text-center">
-          {["Studios", "About", "Gallery", "Book", "Contact"].map((item) => (
-            <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-4xl font-serif italic hover:text-primary transition-colors"
-            >
-              {item}
-            </Link>
-          ))}
+        <div className="flex flex-col gap-8 text-center text-foreground">
+          <Link
+            href="/#studios"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-4xl font-serif italic hover:text-primary transition-colors"
+          >
+            Studios
+          </Link>
+          <Link
+            href="/#about"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-4xl font-serif italic hover:text-primary transition-colors"
+          >
+            About
+          </Link>
+          <Link
+            href="/#gallery"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-4xl font-serif italic hover:text-primary transition-colors"
+          >
+            Gallery
+          </Link>
+          <Link
+            href="/book"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-4xl font-serif italic hover:text-primary transition-colors"
+          >
+            Book
+          </Link>
         </div>
       </div>
     </nav>

@@ -170,10 +170,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Massive Background Text Effect */}
-        <div className="mt-40 opacity-[0.03] select-none pointer-events-none text-center">
-          <span className="text-[20vw] font-serif italic leading-none whitespace-nowrap">Atelier</span>
-        </div>
       </footer>
     </main>
   )

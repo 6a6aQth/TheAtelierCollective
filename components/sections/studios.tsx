@@ -18,11 +18,11 @@ const studios = [
     link: "/studios/ink",
   },
   {
-    name: "The Adornment Atelier",
+    name: "The Talisman Atelier",
     description: "Fine jewelry collections and personal talismans crafted for those who value subtle luxury.",
     image: "/Atelier Models 6.JPG",
     color: "bg-accent/20 text-foreground",
-    link: "/studios/adornment",
+    link: "/studios/talisman",
   },
 ]
 

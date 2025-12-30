@@ -1,7 +1,14 @@
+"use client"
+
 import { Navbar } from "@/components/navbar"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import dynamic from "next/dynamic"
+
+const LiquidEther = dynamic(() => import("@/components/ui/LiquidEther"), {
+  ssr: false,
+})
 
 const wigs = [
   {
@@ -85,7 +92,28 @@ export default function HairStudioPage() {
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] w-full flex items-center justify-center overflow-hidden bg-secondary/30 pt-32 pb-20">
-        <div className="text-center px-6 max-w-4xl mx-auto space-y-8">
+        {/* LiquidEther Background */}
+        <div className="absolute inset-0 z-0 pointer-events-auto">
+          <LiquidEther
+            colors={["#D4A5A5", "#C9B1A0", "#E8D5C4", "#BFA89E"]}
+            mouseForce={20}
+            cursorSize={100}
+            isViscous={false}
+            viscous={30}
+            iterationsViscous={32}
+            iterationsPoisson={32}
+            resolution={0.5}
+            isBounce={false}
+            autoDemo={true}
+            autoSpeed={0.5}
+            autoIntensity={2.2}
+            takeoverDuration={0.25}
+            autoResumeDelay={3000}
+            autoRampDuration={0.6}
+          />
+        </div>
+
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto space-y-8">
           <div className="flex justify-center mb-8">
             <Image
               src="/Atelier_The Atelier Hair Logo.PNG"
@@ -250,4 +278,3 @@ export default function HairStudioPage() {
     </main>
   )
 }
-
