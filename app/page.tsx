@@ -23,7 +23,7 @@ export default function Home() {
               fill
               className="object-cover"
             />
-            <div className="absolute top-8 right-8 bg-background p-8 border border-primary/10 hidden md:block">
+            <div className="absolute bottom-8 left-8 bg-background p-8 border border-primary/10 hidden md:block">
               <span className="block text-4xl font-serif italic mb-2">3</span>
               <span className="text-[10px] uppercase tracking-[0.2em] font-medium leading-tight">
                 Sisters. <br />

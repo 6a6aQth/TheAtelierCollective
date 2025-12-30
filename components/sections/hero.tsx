@@ -1,17 +1,33 @@
-import Image from "next/image"
+"use client"
+
+import dynamic from "next/dynamic"
+
+const LiquidEther = dynamic(() => import("@/components/ui/LiquidEther"), {
+  ssr: false,
+})
 
 export function Hero() {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-muted pt-24">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://images.unsplash.com/photo-1596462502278-27bfdc4033c8?auto=format&fit=crop&q=80"
-          alt="Luxury Studio Interior"
-          fill
-          className="object-cover opacity-80"
-          priority
+    <section className="relative min-h-screen w-full flex items-center justify-center bg-secondary/30 pt-32 pb-24">
+      {/* LiquidEther Background */}
+      <div className="absolute inset-0 z-0 pointer-events-auto">
+        <LiquidEther
+          colors={["#D4A5A5", "#C9B1A0", "#E8D5C4", "#BFA89E"]}
+          mouseForce={20}
+          cursorSize={100}
+          isViscous={false}
+          viscous={30}
+          iterationsViscous={32}
+          iterationsPoisson={32}
+          resolution={0.5}
+          isBounce={false}
+          autoDemo={true}
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background" />
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto space-y-8">
@@ -20,11 +36,6 @@ export function Hero() {
             Optimal <span className="italic">elegance</span> meets exquisite <span className="italic">craft</span>.
           </h1>
         </div>
-
-        <p className="text-sm md:text-lg max-w-xl mx-auto text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-500">
-          Transforming the standard of beauty into a curated creative movement. Five specialized studios, one collective
-          vision.
-        </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-700">
           <button className="bg-primary text-primary-foreground px-10 py-4 text-[10px] uppercase tracking-[0.3em] font-semibold hover:bg-foreground transition-all duration-300">
@@ -36,7 +47,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-12 left-12 hidden lg:flex flex-col gap-4 text-[10px] uppercase tracking-[0.2em] opacity-40">
+      <div className="absolute bottom-12 left-12 hidden lg:flex flex-col gap-4 text-[10px] uppercase tracking-[0.2em] opacity-40 z-10">
         <div className="flex items-center gap-4">
           <span>Instagram</span>
           <div className="w-12 h-[1px] bg-foreground" />

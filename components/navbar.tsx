@@ -1,30 +1,17 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X, ShoppingBag } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-500 px-6 py-4 md:px-12 md:py-8",
-        isScrolled
-          ? "bg-foreground py-4 md:py-4 border-b border-primary/10 text-background"
-          : "bg-transparent text-foreground",
-      )}
-    >
+    <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 md:px-12 md:py-6 bg-foreground text-background">
+
       <div className="max-w-screen-2xl mx-auto flex items-center justify-between">
         <div className="flex-1 hidden md:flex gap-8 text-[10px] uppercase tracking-[0.2em] font-medium">
           <Link href="#studios" className="hover:text-primary transition-colors">
@@ -44,23 +31,13 @@ export function Navbar() {
             alt="The Atelier Collective"
             width={120}
             height={60}
-            className={cn(
-              "h-10 md:h-14 w-auto transition-all duration-300",
-              isScrolled ? "brightness-0 invert" : ""
-            )}
+            className="h-10 md:h-14 w-auto transition-all duration-300 brightness-0 invert"
           />
         </Link>
 
         <div className="flex-1 flex justify-end items-center gap-6">
           <Link href="/cart" className="relative group">
-            <ShoppingBag
-              className={cn(
-                "w-4 h-4 transition-colors",
-                isScrolled
-                  ? "text-background/80 group-hover:text-background"
-                  : "text-foreground/80 group-hover:text-primary",
-              )}
-            />
+            <ShoppingBag className="w-4 h-4 transition-colors text-background/80 group-hover:text-background" />
             <span className="absolute -top-1 -right-1 text-[8px] bg-primary text-white w-3 h-3 flex items-center justify-center rounded-full">
               0
             </span>
